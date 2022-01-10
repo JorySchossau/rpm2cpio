@@ -27,9 +27,9 @@ import gzip
 import subprocess
 
 try:
-    from StringIO import StringIO
+    from BytesIO import BytesIO
 except ImportError:
-    from io import StringIO
+    from io import BytesIO
 
 HAS_LZMA_MODULE = True
 try:
@@ -45,7 +45,7 @@ RPM_MAGIC = b'\xed\xab\xee\xdb'
 
 
 def gzip_decompress(data):
-    gzstream = StringIO(data)
+    gzstream = BytesIO(data)
     gzipper = gzip.GzipFile(fileobj=gzstream)
     data = gzipper.read()
     return data
